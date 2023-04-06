@@ -2,12 +2,15 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
-const questions = [{
-    type: 'input',
-    name: 'Title',
-    message: 'What is the title name for your application?',
-}];
+// TODO: Create an array of questions for user input => can this be an inquirer/prompt method here?
+inquirer
+  .prompt([
+    {
+        type: 'input',
+        name: 'Title',
+        message: 'What is the title name for your application?',
+    }
+]);
 
 
 // TODO: Create a function to write README file
