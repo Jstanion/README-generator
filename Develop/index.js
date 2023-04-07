@@ -9,19 +9,29 @@ const generateMarkdown = require('./utils/generateMarkdown');
 inquirer
   .prompt([
     {
-        type: 'input',
-        name: 'title',
-        message: 'What is the title name for your application?',
+      type: 'input',
+      name: 'title',
+      message: 'What is the title name for your application?',
     },
     {
-        type: 'input',
-        name: 'description',
-        message: {
-          response1: 'What was your motivation for this project?',
-          response2: 'Why did you build this project?',
-          response3: 'What problem does it solve?',
-          response4: 'What did you learn?'
-        },
+      type: 'input',
+      name: 'description1',
+      message: 'What was your motivation for this project?',
+    },
+    {
+      type: 'input',
+      name: 'description2',
+      message: 'Why did you build this project?',
+    },
+    {
+      type: 'input',
+      name: 'description3',
+      message: 'What problem does it solve?',
+    },
+    {
+      type: 'input',
+      name: 'description4',
+      message: 'What did you learn?',
     },
 ])
 // TODO: Create a function to write README file
@@ -37,3 +47,9 @@ function init() {
 
 // Function call to initialize app
 init();
+
+// {
+//   type: 'input',
+//   name: '',
+//   message: '',
+// },
