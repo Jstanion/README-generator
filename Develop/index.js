@@ -13,11 +13,16 @@ inquirer
         name: 'title',
         message: 'What is the title name for your application?',
     },
-    // {
-    //     type: '',
-    //     name: '',
-    //     message: '',
-    //   },
+    {
+        type: 'input',
+        name: 'description',
+        message: {
+          response1: 'What was your motivation for this project?',
+          response2: 'Why did you build this project?',
+          response3: 'What problem does it solve?',
+          response4: 'What did you learn?'
+        },
+    },
 ])
 // TODO: Create a function to write README file
 .then((data) => {
