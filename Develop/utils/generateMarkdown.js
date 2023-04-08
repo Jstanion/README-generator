@@ -20,6 +20,9 @@ ${data.description1} ${data.description2} ${data.description3} ${data.descriptio
 - [Usage](#usage)\n
 - [Credits](#credits)\n
 - [License](#license)\n
+- [Contributing](#contributing)\n
+- [Tests](#tests)\n
+- [Questions](#questions)\n
 ## Installation\n
 ${installMessage}\n
 -${installSteps}\n
