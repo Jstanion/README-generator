@@ -22,16 +22,18 @@
 
 ## Installation
 
-Please follow these steps for installation:
--
+There are no installation steps required.
 
 ## Usage
 
 
+
 ## Screenshot/Walkthrough
 
-()
-There are no screenshots available for this application.
+There are no screenshots available for this application.undefined
+
+There are no walkthrough videos available for this application.undefined
+
 ## Credits
 
 ## License
