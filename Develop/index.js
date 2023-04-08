@@ -33,6 +33,19 @@ inquirer
       name: 'description4',
       message: 'What did you learn?',
     },
+    {
+      type: 'confirm',
+      name: 'installation',
+      message: 'Are there required steps to install your project?',
+      default: true, // Sets the default value to true to ask the question for steps of installation 
+    },
+    {
+      type: 'input',
+      name: 'installSteps',
+      message: 'Enter the step(s) required for installation',
+      when: (answers) => answers.installation, // Only displays answer if the installation question is answered yes (true)
+    },
+    
 ])
 // TODO: Create a function to write README file
 .then((data) => {
