@@ -43,8 +43,15 @@ inquirer
       type: 'input',
       name: 'installSteps',
       message: 'Enter the step(s) required for installation.',
+      filter: (input) => `Please follow these steps for installation:\n-${input}`,
       when: (data) => data.installation, // Only displays answer if the installation question is answered yes (true)
-      default: '',
+    },
+    {
+      type: 'input',
+      name: 'installSteps',
+      message: 'Please press enter to confirm the default message.',
+      when: (data) => !data.installation, // Displays a default message when no installation steps are provided
+      default: 'There are no installation steps required for this application at this time.'
     },
     {
       type: 'input',
@@ -59,25 +66,42 @@ inquirer
     },
     {
       type: 'input',
-      name: 'screenshotDescription',
-      message: 'Enter the description for the screenshot.',
+      name: 'imgAltText',
+      message: 'Enter a description for the screenshot.',
+      filter: (input) => `Please click below to view content:\n ![${input}]`,
       when: (data) => data.screenshot, // Only displays answer if the installation question is answered yes (true)
-      default: '',
     },
     {
       type: 'input',
-      name: 'addScreenshot',
+      name: 'imgURL',
       message: 'Enter the URL/Filepath for the screenshot.',
+      filter: (input) => `(${input})`,
       when: (data) => data.screenshot, // Only displays answer if the installation question is answered yes (true)
-      default: '',
+    },
+    {
+      type: 'confirm',
+      name: 'walkthrough',
+      message: 'Would you like to add a video walkthrough link?',
+      default: true, // Sets the default value to true 
+    },
+    {
+      type: 'input',
+      name: 'walkthroughDescription',
+      message: 'Enter a description for the video walkthrough.',
+      when: (data) => data.walkthrough, // Only displays answer if the installation question is answered yes (true)
+    },
+    {
+      type: 'input',
+      name: 'walkthroughURL',
+      message: 'Enter the URL/Filepath for the video walkthrough.',
+      when: (data) => data.walkthrough, // Only displays answer if the installation question is answered yes (true)
     },
 ])
 // TODO: Create a function to write README file
 .then((data) => {
-    const installMessage = data.installation ? 'Please follow these steps for installation:' : 'There are no installation steps required for this application at this time.';
-    const installSteps = data.installSteps === undefined ? '' : data.installSteps;
-    const screenshot = data.screenshot ? `Please click below to view content:\n ![${data.screenshotDescription}](${data.addScreenshot})` : 'There are no screenshots available for this application.'
-    fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, installMessage, installSteps, screenshot), (err) =>
+    // const screenshot = data.addScreenshot ? `Please click below to view content:\n ![${data.screenshotDescription}](${data.screenshotURL})` : 'There are no screenshots available for this application.'
+    const walkthrough = data.addWalkthrough ? `Please click below to view content:\n ![${data.walkthroughDescription}](${data.walkthroughURL})` : 'There are no screenshots available for this application.'
+    fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, walkthrough), (err) =>
     err ? console.log(err) : console.log('success')
 )});
 

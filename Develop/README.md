@@ -14,16 +14,24 @@
 
 - [License](#license)
 
+- [Contributing](#contributing)
+
+- [Tests](#tests)
+
+- [Questions](#questions)
+
 ## Installation
 
 Please follow these steps for installation:
-
 -
 
 ## Usage
 
-Please click below to view content:
- ![example readme](./images/example-screenshot.png)
+
+## Screenshot/Walkthrough
+
+()
+There are no screenshots available for this application.
 ## Credits
 
 ## License
