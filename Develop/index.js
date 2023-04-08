@@ -37,19 +37,47 @@ inquirer
       type: 'confirm',
       name: 'installation',
       message: 'Are there required steps to install your project?',
-      default: true, // Sets the default value to true to ask the question for steps of installation 
+      default: true, // Sets the default value to true 
     },
     {
       type: 'input',
       name: 'installSteps',
-      message: 'Enter the step(s) required for installation',
-      when: (answers) => answers.installation, // Only displays answer if the installation question is answered yes (true)
+      message: 'Enter the step(s) required for installation.',
+      when: (data) => data.installation, // Only displays answer if the installation question is answered yes (true)
+      default: '',
     },
-    
+    {
+      type: 'input',
+      name: 'usage',
+      message: 'Provide instructions and examples for use.',
+    },
+    {
+      type: 'confirm',
+      name: 'screenshot',
+      message: 'Would you like to add a screenshot?',
+      default: true, // Sets the default value to true 
+    },
+    {
+      type: 'input',
+      name: 'screenshotDescription',
+      message: 'Enter the description for the screenshot.',
+      when: (data) => data.screenshot, // Only displays answer if the installation question is answered yes (true)
+      default: '',
+    },
+    {
+      type: 'input',
+      name: 'addScreenshot',
+      message: 'Enter the URL/Filepath for the screenshot.',
+      when: (data) => data.screenshot, // Only displays answer if the installation question is answered yes (true)
+      default: '',
+    },
 ])
 // TODO: Create a function to write README file
 .then((data) => {
-    fs.writeFile('README.md', generateMarkdown.generateMarkdown(data), (err) =>
+    const installMessage = data.installation ? 'Please follow these steps for installation:' : 'There are no installation steps required for this application at this time.';
+    const installSteps = data.installSteps === undefined ? '' : data.installSteps;
+    const screenshot = data.screenshot ? `Please click below to view content:\n ![${data.screenshotDescription}](${data.addScreenshot})` : 'There are no screenshots available for this application.'
+    fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, installMessage, installSteps, screenshot), (err) =>
     err ? console.log(err) : console.log('success')
 )});
 
@@ -66,3 +94,4 @@ init();
 //   name: '',
 //   message: '',
 // },
+
