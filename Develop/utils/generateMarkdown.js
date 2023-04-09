@@ -13,15 +13,15 @@ const renderLicenseBadge = function(license) {
 // If there is no license, return an empty string
 const renderLicenseLink = function(license) {
   if(license === 'MIT') {
-    return `[License: ${license}](https://mit-license.org/)`
+    return `This application is covered under the following: [License: ${license}](https://mit-license.org/)`
   } else if (license === 'BSD') {
-    return `[License: ${license}](https://choosealicense.com/licenses/bsd-3-clause/)`
+    return `This application is covered under the following: [License: ${license}](https://choosealicense.com/licenses/bsd-3-clause/)`
   } else if (license === 'Apache 2.0') {
-    return `[License: ${license}](https://choosealicense.com/licenses/apache-2.0/)`
+    return `This application is covered under the following: [License: ${license}](https://choosealicense.com/licenses/apache-2.0/)`
   } else if (license === 'Copyleft') {
-    return `[License: ${license}](https://www.mend.io/resources/blog/open-source-copyleft-licenses/)`
+    return `This application is covered under the following: [License: ${license}](https://www.mend.io/resources/blog/open-source-copyleft-licenses/)`
   } else if (license === 'GNU GPLv3') {
-    return `[License: ${license}](https://www.gnu.org/licenses/quick-guide-gplv3.html)`
+    return `This application is covered under the following: [License: ${license}](https://www.gnu.org/licenses/quick-guide-gplv3.html)`
   } else {
     return ''
   };
