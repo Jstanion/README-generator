@@ -114,10 +114,10 @@ inquirer
     },
     {
       type: 'list',
-      name: 'licenseList',
+      name: 'license',
       message: 'Please choose a license for your application:',
-      choices: ['MIT', 'BSD', 'Apache 2.0', 'Copyleft', 'GNU GPLv3'],
-      default: 'MIT'
+      choices: ['None', 'MIT', 'BSD', 'Apache 2.0', 'Copyleft', 'GNU GPLv3'],
+      default: 'None'
     },
     {
       type: 'confirm',
@@ -188,12 +188,12 @@ inquirer
 // TODO: Create a function to write README file
 .then((data) => {
   const sections = {
-    installation : data.installation ? `Please follow these steps for installation:\n-${data.installSteps}` : 'There are no installation steps required.',
-    screenshot : data.screenshot ? `Please click below to view screenshot:\n${data.screenshotText}${data.screenshotURL}` : 'There are no screenshots available for this application.',
-    walkthrough : data.walkthrough ? `Please click the link to view walkthrough video:\n${data.walkthroughText}${data.walkthroughURL}` : 'There are no walkthrough videos available for this application.',
-    credits : data.credits ? `Please click the link to view the profile or website:\n${data.creditText}${data.creditURL}` : 'There are no collaborators, third-party assets, or tutorials for this application.',
-    contributing : data.contributing ? 'Please click the link to view contribution guidelines:\n[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt)' : `${data.contributingText}${data.contributingURL}`,
-    tests : data.tests ? `${data.testDescription}\n Please click the link to view test examples:\n${data.testAltText}${data.testURL}` : 'There are no tests for this application.'
+    installation: data.installation ? `Please follow these steps for installation:\n-${data.installSteps}` : 'There are no installation steps required.',
+    screenshot: data.screenshot ? `Please click below to view screenshot:\n${data.screenshotText}${data.screenshotURL}` : 'There are no screenshots available for this application.',
+    walkthrough: data.walkthrough ? `Please click the link to view walkthrough video:\n${data.walkthroughText}${data.walkthroughURL}` : 'There are no walkthrough videos available for this application.',
+    credits: data.credits ? `Please click the link to view the profile or website:\n${data.creditText}${data.creditURL}` : 'There are no collaborators, third-party assets, or tutorials for this application.',
+    contributing: data.contributing ? 'Please click the link to view contribution guidelines:\n[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt)' : `${data.contributingText}${data.contributingURL}`,
+    tests: data.tests ? `${data.testDescription}\n Please click the link to view test examples:\n${data.testAltText}${data.testURL}` : 'There are no tests for this application.'
   };
     fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, sections), (err) =>
     err ? console.log(err) : console.log('success')
