@@ -50,7 +50,7 @@ inquirer
     {
       type: 'input',
       name: 'usage',
-      message: 'Please provide instructions and examples for use.',
+      message: 'Please provide usage instructions and examples, if any.',
     },
     {
       type: 'confirm',
@@ -61,7 +61,7 @@ inquirer
     {
       type: 'input',
       name: 'screenshotText',
-      message: 'Enter a description for the screenshot.',
+      message: 'Enter a description for the screenshot alt text.',
       filter: (input) => `![${input}]`,
       when: (data) => data.screenshot, // Only displays answer if the installation question is given a truthy value
     },
@@ -81,7 +81,7 @@ inquirer
     {
       type: 'input',
       name: 'walkthroughText',
-      message: 'Enter a short description for the video walkthrough.',
+      message: 'Enter a short description for the video walkthrough hyperlink.',
       filter: (input) => `[${input}]`,
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
@@ -101,7 +101,7 @@ inquirer
     {
       type: 'input',
       name: 'creditText',
-      message: 'Enter a short description for the collaborator, third-party asset, or tutorial.',
+      message: 'Enter a short description for the collaborator, third-party asset, or tutorial hyper link.',
       filter: (input) => `[${input}]`,
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
@@ -121,7 +121,7 @@ inquirer
     {
       type: 'input',
       name: 'contributingText',
-      message: 'Enter a short description for the contribution guidelines source.',
+      message: 'Enter a short description for the contribution guidelines source hyperlink.',
       filter: (input) => `[${input}]`,
       when: (data) => !data.contributing, // Only displays answer if the installation question is given a truthy value
     },
@@ -147,7 +147,7 @@ inquirer
     {
       type: 'input',
       name: 'testAltText',
-      message: 'Enter a short description for the test example.',
+      message: 'Enter a short description for the test example hyperlink.',
       filter: (input) => `[${input}]`,
       when: (data) => data.tests, // Only displays answer if the installation question is given a truthy value
     },
