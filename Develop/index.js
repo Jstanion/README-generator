@@ -113,6 +113,13 @@ inquirer
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
     {
+      type: 'list',
+      name: 'licenseList',
+      message: 'Please choose a license for your application:',
+      choices: ['MIT', 'BSD', 'Apache 2.0', 'Copyleft', 'GNU GPLv3'],
+      default: 'MIT'
+    },
+    {
       type: 'confirm',
       name: 'contributing',
       message: 'Would you like to add the standard contribution guidelines from Contributor Covenant?',
