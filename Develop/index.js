@@ -158,6 +158,25 @@ inquirer
       filter: (input) => `(${input})`,
       when: (data) => data.tests, // Only displays answer if the installation question is given a truthy value
     },
+    {
+      type: 'input',
+      name: 'name',
+      message: 'Please provide your full name.',
+      filter: (input) => `[${input}]`,
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'Please provide your GitHub profile URL.',
+      filter: (input) => `(${input})`,
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Please provide your email address.',
+      filter: (input) => `(mailto:${input})`,
+    },
+
 ])
 // TODO: Create a function to write README file
 .then((data) => {
@@ -167,7 +186,7 @@ inquirer
     walkthrough : data.walkthrough ? `Please click the link to view walkthrough video:\n${data.walkthroughText}${data.walkthroughURL}` : 'There are no walkthrough videos available for this application.',
     credits : data.credits ? `Please click the link to view the profile or website:\n${data.creditText}${data.creditURL}` : 'There are no collaborators, third-party assets, or tutorials for this application.',
     contributing : data.contributing ? 'Please click the link to view contribution guidelines:\n[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt)' : `${data.contributingText}${data.contributingURL}`,
-    tests: data.tests ? `${data.testDescription}\nPlease click the link to view test examples:\n${data.testAltText}${data.testURL}` : 'There are no tests for this application.'
+    tests : data.tests ? `${data.testDescription}\n Please click the link to view test examples:\n${data.testAltText}${data.testURL}` : 'There are no tests for this application.'
   };
     fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, sections), (err) =>
     err ? console.log(err) : console.log('success')

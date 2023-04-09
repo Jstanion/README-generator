@@ -37,7 +37,10 @@ ${sections.contributing}\n
 ## Tests\n
 ${sections.tests}\n
 ## Questions\n
-
+Please visit my GitHub profile for more of my work:
+${data.name}${data.github}\n
+For any questions about this application you can contact:
+${data.name}${data.email}
 `;
 }
 
