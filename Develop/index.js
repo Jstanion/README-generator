@@ -43,14 +43,14 @@ inquirer
     {
       type: 'input',
       name: 'installSteps',
-      message: 'Enter the step(s) required for installation.',
+      message: 'Enter the step(s) required for installation:',
       filter: (input) => `${input}`,
       when: (data) => data.installation, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'usage',
-      message: 'Please provide usage instructions and examples, if any.',
+      message: 'Please provide any usage instructions and examples:',
     },
     {
       type: 'confirm',
@@ -61,14 +61,14 @@ inquirer
     {
       type: 'input',
       name: 'screenshotText',
-      message: 'Enter a description for the screenshot alt text.',
+      message: 'Enter a description for the screenshot alt text:',
       filter: (input) => `![${input}]`,
       when: (data) => data.screenshot, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'screenshotURL',
-      message: 'Enter the URL/Filepath for the screenshot.',
+      message: 'Enter the URL/Filepath for the screenshot:',
       filter: (input) => `(${input})`,
       when: (data) => data.screenshot, // Only displays answer if the installation question is given a truthy value
     },
@@ -81,14 +81,14 @@ inquirer
     {
       type: 'input',
       name: 'walkthroughText',
-      message: 'Enter a short description for the video walkthrough hyperlink.',
+      message: 'Enter a short description for the video walkthrough hyperlink:',
       filter: (input) => `[${input}]`,
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'walkthroughURL',
-      message: 'Enter the URL/Filepath for the video walkthrough.',
+      message: 'Enter the URL/Filepath for the video walkthrough:',
       filter: (input) => `(${input})`,
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
@@ -101,14 +101,14 @@ inquirer
     {
       type: 'input',
       name: 'creditText',
-      message: 'Enter a short description for the collaborator, third-party asset, or tutorial hyper link.',
+      message: 'Enter a short description for the collaborator, third-party asset, or tutorial hyper link:',
       filter: (input) => `[${input}]`,
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'creditURL',
-      message: 'Enter the URL/Filepath for the collaborator, third-party asset, or tutorial.',
+      message: 'Enter the URL/Filepath for the collaborator, third-party asset, or tutorial:',
       filter: (input) => `(${input})`,
       when: (data) => data.walkthrough, // Only displays answer if the installation question is given a truthy value
     },
@@ -121,14 +121,14 @@ inquirer
     {
       type: 'input',
       name: 'contributingText',
-      message: 'Enter a short description for the contribution guidelines source hyperlink.',
+      message: 'Enter a short description for the contribution guidelines source hyperlink:',
       filter: (input) => `[${input}]`,
       when: (data) => !data.contributing, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'contributingURL',
-      message: 'Enter the URL/Filepath for the contribution guidelines source.',
+      message: 'Enter the URL/Filepath for the contribution guidelines source:',
       filter: (input) => `(${input})`,
       when: (data) => !data.contributing, // Only displays answer if the installation question is given a truthy value
     },
@@ -141,23 +141,42 @@ inquirer
     {
       type: 'input',
       name: 'testDescription',
-      message: 'Please provide tests for your application.',
+      message: 'Please provide tests for your application:',
       when: (data) => data.tests, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'testAltText',
-      message: 'Enter a short description for the test example hyperlink.',
+      message: 'Enter a short description for the test example hyperlink:',
       filter: (input) => `[${input}]`,
       when: (data) => data.tests, // Only displays answer if the installation question is given a truthy value
     },
     {
       type: 'input',
       name: 'testURL',
-      message: 'Enter the URL/Filepath for the test example source.',
+      message: 'Enter the URL/Filepath for the test example source:',
       filter: (input) => `(${input})`,
       when: (data) => data.tests, // Only displays answer if the installation question is given a truthy value
     },
+    {
+      type: 'input',
+      name: 'name',
+      message: 'Please provide your full name:',
+      filter: (input) => `[${input}]`,
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'Please provide your GitHub profile username:',
+      filter: (input) => `(https://github.com/${input})`,
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'Please provide your email address:',
+      filter: (input) => `(mailto:${input})`,
+    },
+
 ])
 // TODO: Create a function to write README file
 .then((data) => {
@@ -167,7 +186,7 @@ inquirer
     walkthrough : data.walkthrough ? `Please click the link to view walkthrough video:\n${data.walkthroughText}${data.walkthroughURL}` : 'There are no walkthrough videos available for this application.',
     credits : data.credits ? `Please click the link to view the profile or website:\n${data.creditText}${data.creditURL}` : 'There are no collaborators, third-party assets, or tutorials for this application.',
     contributing : data.contributing ? 'Please click the link to view contribution guidelines:\n[Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.txt)' : `${data.contributingText}${data.contributingURL}`,
-    tests: data.tests ? `${data.testDescription}\nPlease click the link to view test examples:\n${data.testAltText}${data.testURL}` : 'There are no tests for this application.'
+    tests : data.tests ? `${data.testDescription}\n Please click the link to view test examples:\n${data.testAltText}${data.testURL}` : 'There are no tests for this application.'
   };
     fs.writeFile('README.md', generateMarkdown.generateMarkdown(data, sections), (err) =>
     err ? console.log(err) : console.log('success')
