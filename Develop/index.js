@@ -116,7 +116,7 @@ inquirer
       type: 'list',
       name: 'license',
       message: 'Please choose a license for your application:',
-      choices: ['None', 'MIT', 'BSD', 'Apache 2.0', 'Copyleft', 'GNU GPLv3'],
+      choices: ['None', 'MIT', 'BSD', 'Apache2.0', 'Copyleft', 'GNUGPLv3'],
       default: 'None'
     },
     { // Contribution section prompts

@@ -5,7 +5,7 @@ const renderLicenseBadge = function(license) {
   if(license === 'none') {
     return ''
   } else {
-    return `![License: ${license}](https://img.shields.io/badge/<license>-<${license}>-<brightgreen>)`
+    return `![License: ${license}](https://img.shields.io/badge/license-${license}-brightgreen)`
   }
 };
 
